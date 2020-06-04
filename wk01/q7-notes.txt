@@ -1,0 +1,34 @@
+
+Random notes
+
+Question 7
+- There are different parts of memory:
+  - Stack
+  - Heap
+  - Code (Read-Only)
+    - The strings in the code are stored here
+    - "abc" (suppose memory address is 0x1234)
+    - "xyz" (suppose memory address is 0x2345)
+    - "xyz" (suppose memory address is 0x3456)
+
+  - After x = y = 2;
+    - x has the value 2
+    - y has the value 2
+
+  - After c = d = "abc";
+    - c has the value 0x1234 (assuming the memory addresses above)
+    - d has the value 0x1234
+  
+  - After e = "xyz"; f = "xyz";
+    - e has the value 0x2345
+    - f has the value 0x3456
+
+  - After x++;
+    - x has the value 3
+
+  - After *c = 'A';
+    - The program crashes with a segmentation fault. The code is trying to modify the first character of the string pointed to by c ("abc") to an 'A' (which would change the string to "Abc"), but since "abc" is stored in the code section, which is read-only, it can't be modified.
+	- So this raises the question - how do we create a modifiable string? One way is to declare a character array and initialise it using a string, like so:
+	  char g[] = "abc";
+	- Note that g is a character array, not a pointer, so you can't use *. To modify the first character, you do g[0] = 'A';
+	- Also, g is stored on the stack, so it will no longer exist after the function in which it was created ends (returns).
