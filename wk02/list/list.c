@@ -14,31 +14,64 @@
 // typedef Node *List;
 
 int lengthIterative(List l) {
-    return 0;
+    int length = 0;
+
+    // for loop
+    // 1. initialisation/declaration
+    // 2. condition
+    // 3. increment
+    for (List curr = l; curr != NULL; curr = curr->next) {
+        length++;
+    }
+
+    return length;
 }
 
 int lengthRecursive(List l) {
-    return 0;
+    // empty list
+    if (l == NULL) {
+        return 0;
+    } else {
+        return 1 + lengthRecursive(l->next);
+    }
 }
 
 ////////////////////////////////////////////////////////////
+// mean = average
 
 float meanIterative(List l) {
     assert(l != NULL);
 
-    return 0.0;
+    // what do we need?
+    int sum = 0;
+    int length = 0;
+    for (List curr = l; curr != NULL; curr = curr->next) {
+        sum += curr->data;
+        length++;
+    }
+
+    return 1.0 * sum / length;
+
+    // float = 4 bytes = 32 bits
+    // double = 8 bytes = 64 bits
 }
 
 float meanRecursive(List l) {
     assert(l != NULL);
 
-    return 0.0;
+    int sum = sumRecursive(l);
+    int length = lengthRecursive(l);
+    return 1.0 * sum / length;
 }
 
 ////////////////////////////////////////////////////////////
 
 int sumRecursive(List l) {
-    return 0;
+    if (l == NULL) {
+        return 0;
+    } else {
+        return l->data + sumRecursive(l->next);
+    }
 }
 
 ////////////////////////////////////////////////////////////
