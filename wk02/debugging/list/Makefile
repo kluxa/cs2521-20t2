@@ -1,21 +1,16 @@
-# COMP2521 19t1 ... lab 01 Makefile
+# COMP2521 19t1 ... lab 6
 
-CC	= gcc -Wall -Werror -g
+CC	= gcc
+CFLAGS	= -Wall -Werror -g
+LDFLAGS	=
 
 .PHONY: all
-all: useIntList randList
+all: testQ
 
-useIntList:	useIntList.o IntList.o
-useIntList.o:	useIntList.c IntList.h
-IntList.o:	IntList.c IntList.h
-
-randList:	randList.o
+testQ:		testQ.o Queue.o
+testQ.o:	testQ.c Queue.h
+Queue.o:	Queue.c Queue.h
 
 .PHONY: clean
 clean:
-	-rm -f useIntList IntList.o useIntList.o
-	-rm -f randList randList.o
-
-.PHONY: give
-give: IntList.c timing.txt
-	give cs2521 lab01 $^
+	-rm -f testQ testQ.o Queue.o

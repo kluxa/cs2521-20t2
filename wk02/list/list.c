@@ -24,10 +24,14 @@ int lengthRecursive(List l) {
 ////////////////////////////////////////////////////////////
 
 float meanIterative(List l) {
+    assert(l != NULL);
+
     return 0.0;
 }
 
 float meanRecursive(List l) {
+    assert(l != NULL);
+
     return 0.0;
 }
 

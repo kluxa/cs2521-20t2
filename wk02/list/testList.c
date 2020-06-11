@@ -5,11 +5,11 @@
 
 #include "list.h"
 
-List l1, l2, l3, l4;
-
 void initLists(void);
 void testLength(void);
 void testMean(void);
+
+List l1, l2, l3, l4;
 
 int main(void) {
     initLists();
@@ -49,6 +49,7 @@ void testLength(void) {
     assert(lengthRecursive(l3) == 2);
     assert(lengthIterative(l4) == 4);
     assert(lengthRecursive(l4) == 4);
+    printf("length tests passed!\n");
 }
 
 void testMean(void) {
@@ -58,4 +59,5 @@ void testMean(void) {
     assert(meanRecursive(l3) == 5.00);
     assert(meanIterative(l4) == 2.25);
     assert(meanRecursive(l4) == 2.25);
+    printf("mean tests passed!\n");
 }
