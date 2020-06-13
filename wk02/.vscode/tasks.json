@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build sorter",
+            "command": "/usr/bin/make",
+            "args": [
+                "sorter",
+                "--directory",
+                "${workspaceFolder}/debugging/array",
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build testQ",
+            "command": "/usr/bin/make",
+            "args": [
+                "testQ",
+                "--directory",
+                "${workspaceFolder}/debugging/list",
+            ],
+            "group": "build"
+        }
+    ]
+}
