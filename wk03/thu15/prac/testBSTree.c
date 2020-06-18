@@ -26,9 +26,9 @@ int main(void) {
     initTrees();
 
     testBSTreeNumNodes();
+    testBSTreeHeight();
     testCountInternal();
     testNodeDepth();
-    testBSTreeHeight();
 
     printf("All tests passed!\n");
 }

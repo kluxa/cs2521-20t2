@@ -7,7 +7,16 @@
  * Returns the number of nodes in the tree.
  */
 int BSTreeNumNodes(BSTree t) {
-    return 0;
+    // empty tree
+    if (t == NULL) {
+        return 0;
+    } else {
+        return 1 + BSTreeNumNodes(t->left) + BSTreeNumNodes(t->right);
+
+        // int l = BSTreeNumNodes(t->left); // #nodes in left subtree
+        // int r = BSTreeNumNodes(t->right); // #nodes in right subtree
+        // return 1 + l + r;
+    }
 }
 
 /**
@@ -16,7 +25,19 @@ int BSTreeNumNodes(BSTree t) {
  * node. The height of an empty tree is -1.
  */
 int BSTreeHeight(BSTree t) {
-    return -1;
+    // empty tree
+    if (t == NULL) {
+        return -1;
+    
+    // leaf
+    } else if (t->left == NULL && t->right == NULL) {
+        return 0;
+    
+    } else {
+        int lh = BSTreeHeight(t->left);
+        int rh = BSTreeHeight(t->right);
+        return lh > rh ? 1 + lh : 1 + rh;
+    }
 }
 
 /**
@@ -25,7 +46,22 @@ int BSTreeHeight(BSTree t) {
  * leaf.
  */
 int countInternal(BSTree t) {
-    return 0;
+    // empty tree
+    if (t == NULL) {
+        return 0;
+
+    // leaf
+    } else if (t->left == NULL && t->right == NULL) {
+        return 0;
+
+    // t is an internal node
+    } else {
+        return 1 + countInternal(t->left) + countInternal(t->right);
+
+        // int l = countInternal(t->left);
+        // int r = countInternal(t->right);
+        // return 1 + l + r;
+    }
 }
 
 /**
@@ -33,6 +69,28 @@ int countInternal(BSTree t) {
  * it exists, or -1 otherwise.
  */
 int nodeDepth(BSTree t, int key) {
-    return -1;
+    // couldn't find the key
+    if (t == NULL) {
+        return -1;
+    
+    // the key is in the root of the subtree
+    } else if (key == t->value) {
+        return 0;
+    
+    // the key is in the left subtree (if it
+    // is in the tree at all)
+    } else if (key < t->value) {
+        // search the left subtree for the key
+        int depth = nodeDepth(t->left, key);
+
+        // if the key can't be found in the left
+        // subtree return -1, otherwise return 1 +
+        // the depth of the key in the left subtree
+        return depth == -1 ? -1 : 1 + depth;
+    
+    } else { // (key > t->value)
+        int depth = nodeDepth(t->right, key);
+        return depth == -1 ? -1 : 1 + depth;
+    }
 }
 
